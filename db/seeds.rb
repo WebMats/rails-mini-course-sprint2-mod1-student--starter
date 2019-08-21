@@ -11,3 +11,10 @@ Product.create!([
   { name: "Widget Kit",         inventory: 123, cost_cents: 1_200_00 },
   { name: "Refurbished Widget", inventory: 39,  cost_cents: 900_00 },
 ])
+
+
+Order.create!([
+  { customer_id: 1 },
+  { customer_id: 3 },
+  { customer_id: 2 }
+])
