@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_173536) do
+ActiveRecord::Schema.define(version: 2019_08_20_170025) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status", default: "pending", null: false
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", default: "2019-08-20 17:19:11", null: false
+    t.datetime "updated_at", default: "2019-08-20 17:19:11", null: false
   end
 
   create_table "products", force: :cascade do |t|
